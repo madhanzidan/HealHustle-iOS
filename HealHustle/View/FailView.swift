@@ -55,7 +55,6 @@ struct FailView: View {
 
 struct FailView_Previews: PreviewProvider {
     static var previews: some View {
-        //FailView()
         FailView(popToRoot: .constant(true))
     }
 }

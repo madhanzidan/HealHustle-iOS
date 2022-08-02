@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-struct Quote: Codable {
-    var quote_id: Int
-    var quote: String
-    var author: String
-    //var series: String
+struct Quote: Codable, Hashable {
+    var text: String
+    var author: String?
 }
 
 struct QuotesAPI: View {
@@ -19,13 +17,12 @@ struct QuotesAPI: View {
     
     var body: some View {
         NavigationView {
-            List(quotes, id: \.quote_id) { quote in
+            List(quotes, id: \.self) { quote in
                 VStack (alignment: .leading) {
-                    Text("\"\(quote.quote)\"")
+                    Text("\"\(quote.text)\"")
                         .font(.system(size: 20).italic())
-                        //.fontWeight(.medium)
                         .foregroundColor(Color("DarkGrey"))
-                    Text(quote.author)
+                    Text(quote.author ?? "")
                         .font(.system(size: 16))
                         .fontWeight(.bold)
                         .foregroundColor(Color("Green"))
@@ -40,19 +37,22 @@ struct QuotesAPI: View {
     
     func fetchData() async {
         //create url
-        guard let url = URL(string: "https://www.breakingbadapi.com/api/quotes") else {
+        guard let url = URL(string: "https://type.fit/api/quotes") else {
             print("Hey yooo this URL doesn't work!")
             return
         }
-        //fetch data from that url
+        //fetch data from url
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            
-            //decode that data
+
+            //decode data
+            print(data)
             if let decodedResponse = try? JSONDecoder().decode([Quote].self, from: data) {
                 quotes = decodedResponse
+                print(quotes)
             }
         } catch {
+            print(error)
             print("Sorry, this data is not valid :(")
         }
         

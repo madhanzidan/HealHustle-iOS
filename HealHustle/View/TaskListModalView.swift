@@ -147,9 +147,6 @@ struct TaskListModalView: View {
 
 struct TaskListModalView_Previews: PreviewProvider {
     static var previews: some View {
-        //TaskListModalView(isShowing: .constant(true))
-        //TimerView(endRunning: .constant(true))
-//        TimerView(endRunning: .constant(true), rootIsActive: .constant(true))
         TimerView(endRunning: false, rootIsActive: .constant(false))
     }
 }
