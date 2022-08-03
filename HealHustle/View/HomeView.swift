@@ -24,7 +24,7 @@ struct HomeView: View {
                             .frame(height: 172)
                             .ignoresSafeArea()
                             .shadow(color: Color("Orange").opacity(1), radius: 30)
-                        Text("Hello Zidan,\nLet’s start your hustle!")
+                        Text("Hello,\nLet’s start your hustle!")
                             .font(.system(size: 33))
                             .fontWeight(.heavy)
                             .foregroundColor(Color("Orange"))
