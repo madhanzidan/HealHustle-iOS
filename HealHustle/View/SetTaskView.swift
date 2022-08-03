@@ -63,11 +63,11 @@ struct SetTaskView: View {
                     .onReceive([self.selectedProdType].publisher.first()) { value in
                         if value == 0 {
                             breakTime = 1200
-                            timeAmount = 5
+                            timeAmount = 5400
                             prodType = "LONG"
                             prodName = "Ultradian Rhytms"
                         } else if value == 1 {
-                            breakTime = 1060
+                            breakTime = 1020
                             timeAmount = 3120
                             prodType = "MEDIUM"
                             prodName = "Desktime Variation"
